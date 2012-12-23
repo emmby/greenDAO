@@ -5,20 +5,20 @@
   <version>1.3-emmby-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20121223.224505</timestamp>
+      <timestamp>20121223.225246</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20121223224505</lastUpdated>
+    <lastUpdated>20121223225246</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.3-emmby-20121223.224505-1</value>
-        <updated>20121223224505</updated>
+        <value>1.3-emmby-20121223.225246-1</value>
+        <updated>20121223225246</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.3-emmby-20121223.224505-1</value>
-        <updated>20121223224505</updated>
+        <value>1.3-emmby-20121223.225246-1</value>
+        <updated>20121223225246</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
