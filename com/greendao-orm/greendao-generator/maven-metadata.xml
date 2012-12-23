@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.greendao-orm</groupId>
-  <artifactId>greendao</artifactId>
+  <artifactId>greendao-generator</artifactId>
   <versioning>
     <versions>
       <version>1.3-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20121223221140</lastUpdated>
+    <lastUpdated>20121223221145</lastUpdated>
   </versioning>
 </metadata>
