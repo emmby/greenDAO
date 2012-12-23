@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.greendao-orm</groupId>
+  <artifactId>DaoExampleGenerator</artifactId>
+  <version>1.3-emmby-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20121223.224515</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20121223224515</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.3-emmby-20121223.224515-1</value>
+        <updated>20121223224515</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.3-emmby-20121223.224515-1</value>
+        <updated>20121223224515</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
