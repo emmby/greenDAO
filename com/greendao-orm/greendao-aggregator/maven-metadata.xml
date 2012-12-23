@@ -4,8 +4,8 @@
   <artifactId>greendao-aggregator</artifactId>
   <versioning>
     <versions>
-      <version>1.3-SNAPSHOT</version>
+      <version>1.3-emmby-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20121223221534</lastUpdated>
+    <lastUpdated>20121223224458</lastUpdated>
   </versioning>
 </metadata>
