@@ -5,15 +5,15 @@
   <version>1.3-emmby-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20121223.224458</timestamp>
+      <timestamp>20121223.225239</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20121223224458</lastUpdated>
+    <lastUpdated>20121223225239</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.3-emmby-20121223.224458-1</value>
-        <updated>20121223224458</updated>
+        <value>1.3-emmby-20121223.225239-1</value>
+        <updated>20121223225239</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
