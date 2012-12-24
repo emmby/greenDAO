@@ -127,7 +127,7 @@ public class LazyList<E> implements List<E>, Closeable {
     private final ReentrantLock lock;
     private volatile int loadedCount;
 
-    LazyList(AbstractDao<E, ?> dao, Cursor cursor, boolean cacheEntities) {
+    protected LazyList(AbstractDao<E, ?> dao, Cursor cursor, boolean cacheEntities) {
         this.dao = dao;
         this.cursor = cursor;
         size = cursor.getCount();
