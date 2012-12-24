@@ -38,13 +38,17 @@ public class Schema {
     private Map<PropertyType, String> propertyToJavaTypeNullable;
     private boolean hasKeepSectionsByDefault;
     private boolean useActiveEntitiesByDefault;
-    private boolean referenceColumnsByName;
+    private boolean enableDefaultValueGetters;
 
     public Schema(int version, String defaultJavaPackage) {
         this.version = version;
         this.defaultJavaPackage = defaultJavaPackage;
         this.entities = new ArrayList<Entity>();
         initTypeMappings();
+    }
+
+    public void enableDefaultValueGetters() {
+        enableDefaultValueGetters = true;
     }
 
     public void enableKeepSectionsByDefault() {
@@ -175,6 +179,10 @@ public class Schema {
 
     public boolean isReferenceColumnsByName() {
         return referenceColumnsByName;
+    }
+
+    public boolean isEnableDefaultValueGetters() {
+        return enableDefaultValueGetters;
     }
 
     void init2ndPass() {
