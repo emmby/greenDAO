@@ -39,6 +39,7 @@ public class Schema {
     private boolean hasKeepSectionsByDefault;
     private boolean useActiveEntitiesByDefault;
     private boolean enableDefaultValueGetters;
+    private boolean referenceColumnsByName;
 
     public Schema(int version, String defaultJavaPackage) {
         this.version = version;
