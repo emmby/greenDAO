@@ -38,6 +38,7 @@ public class Schema {
     private Map<PropertyType, String> propertyToJavaTypeNullable;
     private boolean hasKeepSectionsByDefault;
     private boolean useActiveEntitiesByDefault;
+    private boolean referenceColumnsByName;
 
     public Schema(int version, String defaultJavaPackage) {
         this.version = version;
@@ -52,6 +53,10 @@ public class Schema {
 
     public void enableActiveEntitiesByDefault() {
         useActiveEntitiesByDefault = true;
+    }
+
+    public void referenceColumnsByName() {
+        referenceColumnsByName = true;
     }
 
     private void initTypeMappings() {
@@ -166,6 +171,10 @@ public class Schema {
 
     public boolean isUseActiveEntitiesByDefault() {
         return useActiveEntitiesByDefault;
+    }
+
+    public boolean isReferenceColumnsByName() {
+        return referenceColumnsByName;
     }
 
     void init2ndPass() {
