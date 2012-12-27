@@ -16,10 +16,9 @@
 
 package de.greenrobot.dao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.database.CrossProcessCursor;
 import android.database.Cursor;
@@ -27,6 +26,7 @@ import android.database.CursorWindow;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.text.TextUtils;
 
 /**
  * Base class for all DAOs: Implements entity operations like insert, load, delete, and query.
@@ -41,6 +41,8 @@ import android.database.sqlite.SQLiteStatement;
  *            Primary key (PK) type; use Void if entity does not have exactly one PK
  */
 public abstract class AbstractDao<T, K> {
+    protected static HashMap<String,Integer> columnNameToIndexMap;
+
     protected final SQLiteDatabase db;
     protected final DaoConfig config;
     protected IdentityScope<K, T> identityScope;
@@ -65,6 +67,40 @@ public abstract class AbstractDao<T, K> {
         }
         statements = config.statements;
         pkOrdinal = config.pkProperty != null ? config.pkProperty.ordinal : -1;
+
+
+        //if() {
+            if( columnNameToIndexMap==null ) {
+                synchronized (AbstractDao.class) {
+                    if( columnNameToIndexMap==null ) {
+                        columnNameToIndexMap = new HashMap<String, Integer>();
+                        Cursor c = null;
+                        try {
+                            c = daoSession.getDatabase().rawQuery("SELECT sql FROM sqlite_master WHERE tbl_name = ? AND type = 'table'", new String[]{config.tablename});
+
+                            c.moveToFirst();
+                            final String ddl = c.getString(0);
+                            final String regexp = "^CREATE TABLE .*?\\((.+)\\).*?$";
+                            final Pattern p = Pattern.compile(regexp);
+                            final Matcher m = p.matcher(ddl);
+                            m.matches();
+                            final String columnsStr = m.group(1);
+                            final String[] columns = TextUtils.split(columnsStr, ",");
+                            for( int i=0; i< columns.length; ++i ) {
+                                final String columnName = TextUtils.split(columns[i]," ")[0];
+                                columnNameToIndexMap.put(columnName,i);
+                            }
+
+
+                        } finally {
+                            if( c!=null )
+                                c.close();
+                        }
+
+                    }
+                }
+            }
+        //}
     }
 
     public AbstractDaoSession getSession() {
@@ -97,6 +133,13 @@ public abstract class AbstractDao<T, K> {
 
     public String[] getNonPkColumns() {
         return config.nonPkColumns;
+    }
+
+    /**
+     * @throws NullPointerException if column does not exist
+     */
+    protected int getColumnIndexForName( String name ) {
+        return columnNameToIndexMap.get(name);
     }
 
     /**

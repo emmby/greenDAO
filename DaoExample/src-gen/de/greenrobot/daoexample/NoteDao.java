@@ -86,10 +86,10 @@ public class NoteDao extends AbstractDao<Note, Long> {
     @Override
     public Note readEntity(Cursor cursor, int offset) {
         Note entity = new Note( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1), // text
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // comment
-            cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)) // date
+            cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")), // id
+            cursor.getString(getColumnIndexForName("TEXT")), // text
+            cursor.isNull(getColumnIndexForName("COMMENT")) ? null : cursor.getString(getColumnIndexForName("COMMENT")), // comment
+            cursor.isNull(getColumnIndexForName("DATE")) ? null : new java.util.Date(cursor.getLong(getColumnIndexForName("DATE"))) // date
         );
         return entity;
     }
@@ -97,10 +97,10 @@ public class NoteDao extends AbstractDao<Note, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Note entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setText(cursor.getString(offset + 1));
-        entity.setComment(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
+        entity.setId(cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")));
+        entity.setText(cursor.getString(getColumnIndexForName("TEXT")));
+        entity.setComment(cursor.isNull(getColumnIndexForName("COMMENT")) ? null : cursor.getString(getColumnIndexForName("COMMENT")));
+        entity.setDate(cursor.isNull(getColumnIndexForName("DATE")) ? null : new java.util.Date(cursor.getLong(getColumnIndexForName("DATE"))));
      }
     
     /** @inheritdoc */

@@ -94,9 +94,9 @@ public class OrderDao extends AbstractDao<Order, Long> {
     @Override
     public Order readEntity(Cursor cursor, int offset) {
         Order entity = new Order( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : new java.util.Date(cursor.getLong(offset + 1)), // date
-            cursor.getLong(offset + 2) // customerId
+            cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")), // id
+            cursor.isNull(getColumnIndexForName("DATE")) ? null : new java.util.Date(cursor.getLong(getColumnIndexForName("DATE"))), // date
+            cursor.getLong(getColumnIndexForName("CUSTOMER_ID")) // customerId
         );
         return entity;
     }
@@ -104,9 +104,9 @@ public class OrderDao extends AbstractDao<Order, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Order entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setDate(cursor.isNull(offset + 1) ? null : new java.util.Date(cursor.getLong(offset + 1)));
-        entity.setCustomerId(cursor.getLong(offset + 2));
+        entity.setId(cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")));
+        entity.setDate(cursor.isNull(getColumnIndexForName("DATE")) ? null : new java.util.Date(cursor.getLong(getColumnIndexForName("DATE"))));
+        entity.setCustomerId(cursor.getLong(getColumnIndexForName("CUSTOMER_ID")));
      }
     
     /** @inheritdoc */

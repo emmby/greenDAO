@@ -81,8 +81,8 @@ public class CustomerDao extends AbstractDao<Customer, Long> {
     @Override
     public Customer readEntity(Cursor cursor, int offset) {
         Customer entity = new Customer( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1) // name
+            cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")), // id
+            cursor.getString(getColumnIndexForName("NAME")) // name
         );
         return entity;
     }
@@ -90,8 +90,8 @@ public class CustomerDao extends AbstractDao<Customer, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Customer entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setName(cursor.getString(offset + 1));
+        entity.setId(cursor.isNull(getColumnIndexForName("_id")) ? null : cursor.getLong(getColumnIndexForName("_id")));
+        entity.setName(cursor.getString(getColumnIndexForName("NAME")));
      }
     
     /** @inheritdoc */
